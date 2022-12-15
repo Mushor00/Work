@@ -19,6 +19,7 @@ namespace Zaklad
             Console.WriteLine("3 => ZAKOŃCZ PROGRAM");
             Console.WriteLine();
             Console.WriteLine("WYBIERZ 1, 2 LUB 3:");
+            
 
         }
     }
