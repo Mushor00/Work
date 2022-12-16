@@ -18,8 +18,35 @@ namespace Zaklad
             Console.WriteLine();
             Console.WriteLine("3 => ZAKOŃCZ PROGRAM");
             Console.WriteLine();
-            Console.WriteLine("WYBIERZ 1, 2 LUB 3:");
-            
+            Console.WriteLine("WYBIERZ 1, 2 LUB 3:");           
+        }
+        public int Show()
+        {
+            string odpGracza = Console.ReadLine();
+            var czyWcisnalDobryKlawisz = SprawdzCzyDobryKlawisz(odpGracza);
+            while (!czyWcisnalDobryKlawisz)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine();
+                Console.WriteLine("Nacianąłeś nieprawidowy klawisz!!!");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
+                DisplayMainScreen();
+                odpGracza = Console.ReadLine();
+                czyWcisnalDobryKlawisz = SprawdzCzyDobryKlawisz(odpGracza);
+            }
+            return int.Parse(odpGracza);
+        }
+        private bool SprawdzCzyDobryKlawisz(string odpowiedzGracza)
+        {
+            if (int.TryParse(odpowiedzGracza, out int liczba))
+            {
+                if (liczba >= 1 && liczba <= 4)
+                    return true;
+            }
+
+            return false;
 
         }
     }

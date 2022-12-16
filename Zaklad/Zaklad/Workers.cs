@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace Zaklad
     {
         public void ListWorkers()
         {
+            
             List<Workers> workers = new List<Workers>();
 
             workers.Add(new Workers() { ID = 1, FirstName = "Jan", LastName = "Kowalski", Birthday = new DateTime(2002, 03, 04), Position = "pracownik fizyczny", HourlyRate = 18.5m, FixedSalary = 0});
@@ -33,6 +35,7 @@ namespace Zaklad
             workers.Add(new Workers() { ID = 3, FirstName = "Robert", LastName = "Lewandowski", Birthday = new DateTime(1980, 05, 23), Position = "pracownik fizyczny", HourlyRate = 29.0m, FixedSalary = 0 });
             workers.Add(new Workers() { ID = 4, FirstName = "Zofia", LastName = "Plucińska", Birthday = new DateTime(1998, 11, 02), Position = "urzędnik", HourlyRate =0, FixedSalary = 4750m });
             workers.Add(new Workers() { ID = 5, FirstName = "Grzegorz", LastName = "Braun", Birthday = new DateTime(1960, 01, 29), Position = "pracownik fizyczny", HourlyRate = 49.0m, FixedSalary = 0 });
+
 
             Console.WriteLine("ID" + " | " + "Imię i Nazwisko" + " | " + "Data Urodzenia" + " | " + "Stanowisko");
             Console.WriteLine();
@@ -42,6 +45,32 @@ namespace Zaklad
                 Console.WriteLine();
             }
         }
-    }
+        public void SelectWorker()
+        {
+            Console.WriteLine("PROSZE PODAC ID PRACOWNIKA DLA KTOREGO ZOSTANIE WYLICZONE WYNAGRODZENIE:");
+            string sID = Console.ReadLine();
+            int aID = int.Parse(sID);
 
+            //var lol = workers.FirstOrDefault(a => a.ID == aID);
+
+            if (aID == 0)
+            {
+
+                Console.WriteLine("WYLICZONE WYNAGRODZENIE PRACOWNIKA");
+                Console.WriteLine("---------------------------------");
+                Console.WriteLine("DANE PRACOWNIKA");
+
+
+                Console.WriteLine($"IMIE I NAZWISKO: ");
+                Console.WriteLine($"WIEK: ");
+                Console.WriteLine($"STANOWISKO: ");
+
+                //zalezy od id czy stala czy godzinowa
+                Console.WriteLine("PROSZĘ PODAĆ ILOŚĆ PRZEPRACOWANYVH DNI PRZEZ PRACOWNIKA (MAX 20): ");
+                Console.ReadLine();
+            }
+        }
+
+        
+    }
 }

@@ -1,19 +1,21 @@
-﻿using Zaklad;
+﻿using System.Collections.Generic;
+using Zaklad;
 
 var meesage = new Message();
 var showWorker = new WorkersList();
-var selectWorker = new ShowWorkers();
 //var workersList = new WorkersList();
-
 meesage.DisplayMainScreen();
+
+//showWorker.ListWorkers();
+
 /*
 string sWybor = Console.ReadLine();  
 int wybor = int.Parse(sWybor);
 */
 while (true)
 {
-    string sWybor = Console.ReadLine();
-    int wybor = int.Parse(sWybor);
+   
+    var wybor = meesage.Show();
     if (wybor == 1)
     {
         Console.Clear();
@@ -25,7 +27,7 @@ while (true)
     if (wybor == 2)
     {
         Console.Clear();
-        selectWorker.SelectWorker();
+        showWorker.SelectWorker( );
         break;
     }
     if (wybor == 3)
