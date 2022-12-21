@@ -22,9 +22,9 @@ namespace Zaklad
         }
         public int Show()
         {
-            string odpGracza = Console.ReadLine();
-            var czyWcisnalDobryKlawisz = SprawdzCzyDobryKlawisz(odpGracza);
-            while (!czyWcisnalDobryKlawisz)
+            string input = Console.ReadLine();
+            var goodKeyPressed = CheckButton(input);
+            while (!goodKeyPressed)
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -33,16 +33,16 @@ namespace Zaklad
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
                 DisplayMainScreen();
-                odpGracza = Console.ReadLine();
-                czyWcisnalDobryKlawisz = SprawdzCzyDobryKlawisz(odpGracza);
+                input = Console.ReadLine();
+                goodKeyPressed = CheckButton(input);
             }
-            return int.Parse(odpGracza);
+            return int.Parse(input);
         }
-        private bool SprawdzCzyDobryKlawisz(string odpowiedzGracza)
+        private bool CheckButton(string userInput)
         {
-            if (int.TryParse(odpowiedzGracza, out int liczba))
+            if (int.TryParse(userInput, out int number))
             {
-                if (liczba >= 1 && liczba <= 4)
+                if (number >= 1 && number < 4)
                     return true;
             }
 

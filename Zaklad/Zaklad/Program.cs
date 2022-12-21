@@ -1,17 +1,12 @@
 ﻿using System.Collections.Generic;
 using Zaklad;
+using Zaklad.Worker;
 
 var meesage = new Message();
-var showWorker = new WorkersList();
-//var workersList = new WorkersList();
+var showWorker = new Work();
 meesage.DisplayMainScreen();
 
-//showWorker.ListWorkers();
 
-/*
-string sWybor = Console.ReadLine();  
-int wybor = int.Parse(sWybor);
-*/
 while (true)
 {
    
@@ -27,7 +22,7 @@ while (true)
     if (wybor == 2)
     {
         Console.Clear();
-        showWorker.SelectWorker( );
+        showWorker.SelectWorker();
         break;
     }
     if (wybor == 3)
