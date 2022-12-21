@@ -69,10 +69,16 @@ public class Work
 
             Console.WriteLine("WYLICZONE WYNAGRODZENIE PRACOWNIKA");
             Console.WriteLine("---------------------------------");
+            Console.WriteLine();
             Console.WriteLine("DANE PRACOWNIKA");
+            Console.WriteLine();
             Console.WriteLine($"IMIE I NAZWISKO: {worker.FisrtAndLastName}");
+            Console.WriteLine();
             Console.WriteLine($"WIEK: {worker.Age} lat");
+            Console.WriteLine();
             Console.WriteLine($"STANOWISKO: {worker.Position}");
+            Console.WriteLine();
+
             if (worker.Position == "urzędnik")
             {
                 Console.WriteLine($"PENSJA {Math.Round(worker.FixedSalary, 2)} zł");
@@ -81,19 +87,28 @@ public class Work
             {
                 Console.WriteLine($"PENSJA {Math.Round(worker.HourlyRate, 2)} zł/h");
             }
+
+            Console.WriteLine();
             Console.WriteLine("PROSZĘ PODAĆ ILOŚĆ PRZEPRACOWANYCH DNI PRZEZ PRACOWNIKA (MAX 20): ");
+
             if (!int.TryParse(Console.ReadLine(), out var s))
             {
                 break;
             }
+
+            Console.Clear();
             Console.WriteLine("PROSZĘ PODAĆ KWOTĘ PREMII DLA PRACOWNIKA: ");
             decimal bonus = decimal.Parse(Console.ReadLine());
+
             if(bonus == .5m)
             {
                 bonus = bonus + .1m;
+                Math.Round(bonus, 0);
             }
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Clear();
+
             if (worker.Age <= 26)
             {
                 if (worker.Position == "urzędnik")
@@ -101,16 +116,40 @@ public class Work
                     if (s == 20)
                     {
                         Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(worker.FixedSalary + bonus)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"BRAK PODATKU");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round(worker.FixedSalary + bonus)}  zł");
                     }
                     else
                     {
                         decimal m = 0.8m;
-                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(m * worker.FixedSalary + bonus)} zł");
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(m * worker.FixedSalary)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"BRAK PODATKU");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round(m * worker.FixedSalary)}  zł");
+
                     }
                 }
                 else
                 {
-                    Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8) + bonus} zł");
+                    if (s == 20)
+                    {
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8 + bonus)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"BRAK PODATKU");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round((s * worker.HourlyRate * 8) + bonus)} zł");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"BRAK PODATKU");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round((s * worker.HourlyRate * 8))} zł");
+                    }
                 }
             }
             else
@@ -119,23 +158,41 @@ public class Work
                 {
                     if (s == 20)
                     {
-                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(worker.FixedSalary+bonus)} zł");
-                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round(worker.FixedSalary * 0.18m +bonus)}   zł");
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(worker.FixedSalary + bonus)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round(worker.FixedSalary * 0.18m )}   zł");
+                        Console.WriteLine();
                         Console.WriteLine($"DO WYPŁATY: {Math.Round(worker.FixedSalary - (worker.FixedSalary * 0.18m) + bonus)}  zł");
                     }
                     else
                     {
                         decimal m = 0.8m;
-                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round((m * worker.FixedSalary) + bonus)} zł");
-                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round(worker.FixedSalary * 0.18m + bonus)}  zł");
-                        Console.WriteLine($"DO WYPŁATY: {Math.Round(worker.FixedSalary - (worker.FixedSalary * 0.18m) + bonus)}  zł");
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round((m * worker.FixedSalary) )} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round(worker.FixedSalary * 0.18m )}  zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round(m * worker.FixedSalary - (worker.FixedSalary * 0.18m) )}  zł");
                     }
                 }
                 else
                 {
-                    Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8 + bonus)} zł");
-                    Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round((s * worker.HourlyRate * 8) * 0.18m + bonus)} zł");
-                    Console.WriteLine($"DO WYPŁATY: {Math.Round((s * worker.HourlyRate * 8) - ((s * worker.HourlyRate * 8) * 0.18m) + bonus)} zł");
+                    if (s == 20)
+                    {
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8 + bonus)} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round((s * worker.HourlyRate * 8) * 0.18m )} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round((s * worker.HourlyRate * 8) - ((s * worker.HourlyRate * 8) * 0.18m) + bonus)} zł");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"WYNAGRODZENIE PRACOWNIKA BRUTTO WYNOSI: {Math.Round(s * worker.HourlyRate * 8 )} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"POTRĄCONY PODATEK (18%): {Math.Round((s * worker.HourlyRate * 8) * 0.18m )} zł");
+                        Console.WriteLine();
+                        Console.WriteLine($"DO WYPŁATY: {Math.Round((s * worker.HourlyRate * 8) - ((s * worker.HourlyRate * 8) * 0.18m))} zł");
+                    }
+
                 }
             }
             Console.ForegroundColor = ConsoleColor.White;
