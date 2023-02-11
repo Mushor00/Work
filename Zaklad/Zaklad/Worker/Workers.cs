@@ -102,7 +102,7 @@ public class Work
 
             if(bonus == .5m)
             {
-                bonus = bonus + .1m;
+                bonus += .1m;
                 Math.Round(bonus, 0);
             }
 
