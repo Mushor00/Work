@@ -105,6 +105,7 @@ public class Work
                 bonus += .1m;
                 Math.Round(bonus, 0);
             }
+            Console.WriteLine("lskjdhflakjfhslka");
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Clear();
