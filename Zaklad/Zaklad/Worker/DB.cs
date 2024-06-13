@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography.X509Certificates;
 using static Zaklad.Worker.Work;
 
-namespace Zaklad.Worker;
+namespace Zaklad.Worker.DB;
 public class Db
 {
-    private readonly List<Workers> workers = new()
+    public List<Workers> workers = new()
     {
         new Workers
         {
-            ID = 1, 
+            ID = 1,
             FirstName = "Jan",
             LastName = "Nowak",
             Birthday = new DateTime(2002, 03, 04),
@@ -64,6 +60,19 @@ public class Db
 
 
     public List<Workers> GetWorkers() => workers;
+    public void UpdateWorker(Work.Workers updatedWorker)
+    {
+        var existingWorker = workers.FirstOrDefault(worker => worker.ID == updatedWorker.ID);
+        if (existingWorker != null)
+        {
+            existingWorker.FirstName = updatedWorker.FirstName;
+            existingWorker.LastName = updatedWorker.LastName;
+            existingWorker.Birthday = updatedWorker.Birthday;
+            existingWorker.Position = updatedWorker.Position;
+            existingWorker.HourlyRate = updatedWorker.HourlyRate;
+            existingWorker.FixedSalary = updatedWorker.FixedSalary;
+        }
+    }
 
     public Workers GetWorkerById(int id) => workers.First(x => x.ID == id);
 }
